@@ -11,5 +11,17 @@ services:
       - .:/usr/src/app
     depends_on:
       - mongo
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: npm run start:dev auth
+    ports:
+      - '3001:3001'
+    volumes:
+      - '.:/usr/src/app'
+    depends_on:
+      - mongo
   mongo:
     image: mongo
