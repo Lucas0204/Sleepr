@@ -4,6 +4,8 @@ services:
       context: .
       dockerfile: ./apps/reservations/Dockerfile
       target: development
+    env_file:
+      - ./apps/reservations/.env
     command: npm run start:dev reservations
     ports:
       - '3000:3000'
@@ -16,6 +18,8 @@ services:
       context: .
       dockerfile: ./apps/auth/Dockerfile
       target: development
+    env_file:
+      - ./apps/auth/.env
     command: npm run start:dev auth
     ports:
       - '3001:3001'
