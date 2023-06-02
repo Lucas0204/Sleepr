@@ -18,7 +18,7 @@ import { AUTH_SERVICE } from '@app/common/constants';
         }]),
         LoggerModule,
         ConfigModule.forRoot({
-        isGlobal: true,
+            isGlobal: true,
             validationSchema: Joi.object({
                 MONGODB_URI: Joi.string().required(),
                 PORT: Joi.number().required(),
