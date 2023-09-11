@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { ReservationsService } from './reservations.service';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
-import { JwtAuthGuard } from '@app/common';
+import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
 
 @Controller('reservations')
 export class ReservationsController {
@@ -11,9 +11,10 @@ export class ReservationsController {
     @Post()
     @UseGuards(JwtAuthGuard)
     async create(
-        @Body() createReservationDto: CreateReservationDto
+        @Body() createReservationDto: CreateReservationDto,
+        @CurrentUser() user: UserDto
     ) {
-        return this.reservationsService.create(createReservationDto);
+        return this.reservationsService.create(createReservationDto, user);
     }
 
     @Get()
