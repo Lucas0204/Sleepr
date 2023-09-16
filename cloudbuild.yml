@@ -1,0 +1,72 @@
+steps:
+  # Reservations
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/reservations/prodution',
+        '-f',
+        'apps/reservations/Dockerfile',
+        '.'
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/reservations/prodution'
+      ]
+
+  # Auth
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/auth/prodution',
+        '-f',
+        'apps/auth/Dockerfile',
+        '.'
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/auth/prodution'
+      ]
+
+  # Payments
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/payments/prodution',
+        '-f',
+        'apps/payments/Dockerfile',
+        '.'
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/payments/prodution'
+      ]
+
+  # Notifications
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/notifications/prodution',
+        '-f',
+        'apps/notifications/Dockerfile',
+        '.'
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'southamerica-east1-docker.pkg.dev/analytics-node-test-357014/notifications/prodution'
+      ]
